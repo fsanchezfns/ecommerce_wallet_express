@@ -3,7 +3,7 @@ var router = express.Router();
 var RestController = require('../application/restController')
 
 router.post('/', async function(req, res, next) {
-    res.end(RestController.createOperation(req, res));
+    res = await RestController.createOperation(req, res);
 });
 
 

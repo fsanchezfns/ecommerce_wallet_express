@@ -1,6 +1,20 @@
-function createOperation(req, res) {
-    body = JSON.stringify(req.body)
-    return `body:  ${body}`
+const operation = require('../operations/operation')
+
+
+async function createOperation(req, res) {
+    try {
+        payload = (req.body)
+            //add id wallet
+        payload.idWallet = "5fbdd38e02a9531f34b5afb2";
+
+        result = await operation.createOperation(payload);
+        hlresult(result, res);
+
+    } catch (err) {
+        errDsc = JSON.stringify(err)
+        res.statusCode = 400
+        res.end(errDsc)
+    }
 }
 
 
@@ -19,6 +33,17 @@ function getOperations(req, res) {
 function getWallet(req, res) {
 
     return "getWallet"
+}
+
+
+
+
+//helper
+function hlresult(result, res) {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(result));
+    return res;
 }
 
 
