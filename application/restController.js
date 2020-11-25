@@ -1,14 +1,17 @@
-const operation = require('../operations/operation')
-
+const operation = require('../operations/operation');
+const wallet = require('../wallet/wallet');
 
 async function createOperation(req, res) {
     try {
+        idUser = "600613d38e02a9531f34b5afb2";
+        //retorna la wallet, si no existe la crea.
+        voWallet = await wallet.getWallet(idUser);
         payload = (req.body)
-            //add id wallet
-        payload.idWallet = "5fbdd38e02a9531f34b5afb2";
-
-        result = await operation.createOperation(payload);
-        hlresult(result, res);
+        payload.idWallet = voWallet.id;
+        voOperation = await operation.createOperation(payload);
+        //construyo la proyección. 
+        await wallet.buildWallet(voOperation);
+        hlresult(voOperation, res);
 
     } catch (err) {
         errDsc = JSON.stringify(err)
@@ -18,21 +21,69 @@ async function createOperation(req, res) {
 }
 
 
-function getOperation(req, res) {
+async function getOperation(req, res) {
+    try {
+        idOperation = req.params.idOperation;
+        voOperation = await operation.getOperation(idOperation);
+        hlresult(voOperation, res);
 
-    return `get ${req.params.idOperation}`
+    } catch (err) {
+        console.log('mepa que hay error')
+        errDsc = JSON.stringify(err)
+        res.statusCode = 400
+        res.end(errDsc)
+    }
+
 }
 
 
-function getOperations(req, res) {
+async function getOperations(req, res) {
+    try {
+        idWallet = "5fbdd38e02a9531f34b5afb2"
+        voOperationList = await operation.getOperations(idWallet);
+        hlresult(voOperationList, res);
 
-    return "getOperations"
+
+    } catch (err) {
+        console.log('mepa que hay error')
+        errDsc = JSON.stringify(err)
+        res.statusCode = 400
+        res.end(errDsc)
+
+    }
 }
 
 
-function getWallet(req, res) {
 
-    return "getWallet"
+async function getWallet(req, res) {
+    try {
+        idUser = "600613d38e02a9531f34b5afb2";
+        voWallet = await wallet.getWallet(idUser)
+        hlresult(voWallet, res)
+
+    } catch (err) {
+        console.log(err)
+    }
+
+}
+
+
+
+async function buildWalletFull(req, res) {
+    try {
+        console.log('estoy en build wallet del controler')
+        idWallet = "5fbdd38e02a9531f34b5afb2"
+        voOperationList = await operation.getOperations(idWallet);
+        console.log('ya tengo las operaciionesr')
+        voWallet = await wallet.buildWalletFull(voOperationList);
+
+        hlresult(voWallet, res)
+
+    } catch (error) {
+
+    }
+
+
 }
 
 
@@ -47,4 +98,4 @@ function hlresult(result, res) {
 }
 
 
-module.exports = { createOperation, getOperation, getOperations, getWallet }
+module.exports = { createOperation, getOperation, getOperations, getWallet, buildWalletFull }
