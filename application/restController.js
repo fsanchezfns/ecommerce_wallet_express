@@ -1,9 +1,10 @@
 const operation = require('../operations/operation');
 const wallet = require('../wallet/wallet');
+const token = require('../token/token')
 
 async function createOperation(req, res) {
     try {
-        idUser = "600613d38e02a9531f34b5afb2";
+        idUser = await security(req);
         //retorna la wallet, si no existe la crea.
         voWallet = await wallet.getWallet(idUser);
         payload = (req.body)
@@ -14,24 +15,20 @@ async function createOperation(req, res) {
         hlresult(voOperation, res);
 
     } catch (err) {
-        errDsc = JSON.stringify(err)
-        res.statusCode = 400
-        res.end(errDsc)
+        hlError(err, res)
     }
 }
 
 
 async function getOperation(req, res) {
     try {
+        idUser = await security(req);
         idOperation = req.params.idOperation;
         voOperation = await operation.getOperation(idOperation);
         hlresult(voOperation, res);
 
     } catch (err) {
-        console.log('mepa que hay error')
-        errDsc = JSON.stringify(err)
-        res.statusCode = 400
-        res.end(errDsc)
+        hlError(err, res)
     }
 
 }
@@ -39,16 +36,13 @@ async function getOperation(req, res) {
 
 async function getOperations(req, res) {
     try {
-        idWallet = "5fbdd38e02a9531f34b5afb2"
-        voOperationList = await operation.getOperations(idWallet);
+        idUser = await security(req);
+        voOperationList = await operation.getOperations(idUser);
         hlresult(voOperationList, res);
 
 
     } catch (err) {
-        console.log('mepa que hay error')
-        errDsc = JSON.stringify(err)
-        res.statusCode = 400
-        res.end(errDsc)
+        hlError(err, res)
 
     }
 }
@@ -57,44 +51,75 @@ async function getOperations(req, res) {
 
 async function getWallet(req, res) {
     try {
-        idUser = "600613d38e02a9531f34b5afb2";
+        idUser = await security(req);
         voWallet = await wallet.getWallet(idUser)
         hlresult(voWallet, res)
 
     } catch (err) {
-        console.log(err)
+        hlError(err, res)
     }
 
 }
 
 
-
 async function buildWalletFull(req, res) {
     try {
-        console.log('estoy en build wallet del controler')
-        idWallet = "5fbdd38e02a9531f34b5afb2"
-        voOperationList = await operation.getOperations(idWallet);
+        idUser = await security(req);
+        voOperationList = await operation.getOperations(idUser);
         console.log('ya tengo las operaciionesr')
         voWallet = await wallet.buildWalletFull(voOperationList);
 
         hlresult(voWallet, res)
 
-    } catch (error) {
-
+    } catch (err) {
+        hlError(err, res)
     }
 
 
 }
 
 
+//HELPER
 
-
-//helper
+//format response OK 
 function hlresult(result, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(result));
     return res;
+}
+
+//format Error /*luego realizar un handler error*/
+function hlError(err, res) {
+    let error = new Object();
+    res.statusCode = 400;
+    res.setHeader('Content-Type', 'application/json')
+    error.messages = err;
+    res.end(JSON.stringify(error))
+
+}
+
+
+
+//security  
+async function security(req) {
+    //obtener el header
+    headers = req.headers
+    tokenHeader = headers.authorization
+
+    if (tokenHeader == null) { throw ('queonda') };
+
+    tokenAux = tokenHeader.substr(7)
+
+    //validar
+    voUser = await token.validate(tokenAux);
+
+    if (voUser == null) {
+        throw ('noautorizado');
+    } else {
+
+        return JSON.parse(voUser).id;
+    }
 }
 
 
