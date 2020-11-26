@@ -36,5 +36,11 @@ async function checkToken(token) {
 }
 
 
+async function invalidateSession(token) {
+    await cache.clearCache(token);
+    console.log('invalidateSession' + token)
+}
+
+
 
 module.exports = { validate }
