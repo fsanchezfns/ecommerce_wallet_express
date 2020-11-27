@@ -43,4 +43,4 @@ async function invalidateSession(token) {
 
 
 
-module.exports = { validate }
+module.exports = { validate, invalidateSession }
