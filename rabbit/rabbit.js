@@ -4,27 +4,6 @@ var amqp = require('amqplib/callback_api');
 /*Tome como punto de partiad este repo */
 //https://github.com/alfredobs97/RabbitMQ/blob/master/src/rabbit.js
 
-/*
-async function start() {
-    const server = await createConnection('amqp://rabbitmq:rabbitmq@localhost');
-    const channel = await createChannel(server);
-
-    // crear las colas al arrancar porque si no va a petar cuando empiecen a escuchar por estas colas
-    channel.assertQueue(queueKeyBack, {
-        durable: true
-    });
-
-    channel.assertQueue(queueKey, {
-        durable: true
-    });
-
-    channel.assertQueue(queueEmail, {
-        durable: true
-    });
-
-    return channel;
-}*/
-
 async function getChannel() {
     try {
         const server = await createConnection('amqp://192.168.99.100');

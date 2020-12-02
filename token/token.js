@@ -10,7 +10,7 @@ async function validate(token) {
     //Sevice auth
     value = await checkToken(token);
     if (value != null) {
-        await cache.setCache(token, value, 10 * 1000);
+        await cache.setCache(token, value, 100 * 1000);
         return value;
     }
 
@@ -19,7 +19,6 @@ async function validate(token) {
 
 
 async function checkToken(token) {
-    console.log('esto en check token')
     try {
         let response = await axios.get('http://localhost:3001/v1/users/current', {
             headers: { 'Authorization': 'Bearer ' + token }
@@ -38,7 +37,8 @@ async function checkToken(token) {
 
 async function invalidateSession(token) {
     await cache.clearCache(token);
-    console.log('invalidateSession' + token)
+    console.log('invalidateSession ' + token)
+    return;
 }
 
 

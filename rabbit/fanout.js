@@ -1,7 +1,7 @@
-rabbit = require('./rabbit')
+const rabbit = require('./rabbit');
+const rabbitController = require('./rabbitController');
 
-
-async function rabbitConnect() {
+async function init() {
     channel = await rabbit.getChannel();
     //registro
 
@@ -25,9 +25,8 @@ async function rabbitConnect() {
 
         channel.consume(q.queue, function(msg) {
             if (msg.content) {
-                console.log(" [x] %s", msg.content.toString());
                 console.log("Tengo que desloguear el usaurio")
-                    //token.invalidateSession()
+                rabbitController.invalidateToken(msg.content.toString())
             }
         }, {
             noAck: true
@@ -36,4 +35,4 @@ async function rabbitConnect() {
 
 }
 
-module.exports = { rabbitConnect }
+module.exports = { init }
