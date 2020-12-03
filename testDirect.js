@@ -16,9 +16,9 @@ amqp.connect('amqp://192.168.99.100', function(error0, connection) {
         });
 
         data = new Object();
-        data.idWallet = "5fc029740a9c1c38cc225f9b";
+        data.idWallet = "5f964059b2c38d058cd5a51e";
         data.type = "extraction";
-        data.description = "primera operacion con order de melisa y no tiene wallet";
+        data.description = "demo con el profe a el usuario franco";
         data.amount = 500;
         data.idOrder = 1;
 

@@ -12,12 +12,11 @@ async function validate(token) {
 
     //Sevice auth
     value = await checkToken(token);
-    if (value != null) {
-        await cache.setCache(token, value, 100 * 1000);
-        return value;
-    }
+    if (value == null) return null;
 
-    return null;
+    await cache.setCache(token, value, 100 * 1000);
+    return value;
+
 }
 
 

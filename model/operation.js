@@ -105,6 +105,6 @@ function operationToVO(operation) {
     return voOperation;
 }
 
-//pregunta??? hago un VOtoOperation???
+
 
 module.exports = { createOperation, getOperation, getOperations }
