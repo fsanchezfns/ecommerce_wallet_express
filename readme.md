@@ -4,4 +4,7 @@
 
 
 run app
-SET DEBUG=tateti-express:* & npm start
+SET DEBUG=ecommerce-wallet-express:* & npm start
+
+create doc
+//apidoc -i routes -o ./public

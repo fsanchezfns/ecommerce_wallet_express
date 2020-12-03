@@ -1,0 +1,187 @@
+[
+  {
+    "type": "get",
+    "url": "/operation/:id",
+    "title": "Get Operation",
+    "name": "Get_Operation",
+    "group": "Operations",
+    "description": "<p>Consulta las operaciones</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 OK\n{\n \"id\": \"5fc95e3ee6884c33089acf9f\",\n\"idWallet\": \"5f964059b2c38d058cd5a51e\",\n\"dateTime\": \"2020-12-03T21:49:58.267Z\",\n\"type\": \"extraction\",\n\"description\": \"segunda extración de melisa\",\n\"amount\": 5000,\n\"idOrder\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/operations.js",
+    "groupTitle": "Operations",
+    "examples": [
+      {
+        "title": "HeaderAuthorization",
+        "content": "\nAuthorization = Bearer {token}",
+        "type": "json"
+      }
+    ],
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/operations",
+    "title": "Get Operations",
+    "name": "Get_Operations",
+    "group": "Operations",
+    "description": "<p>Consulta las operaciones</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 OK\n[{\n \"id\": \"5fc95e3ee6884c33089acf9f\",\n\"idWallet\": \"5f964059b2c38d058cd5a51e\",\n\"dateTime\": \"2020-12-03T21:49:58.267Z\",\n\"type\": \"extraction\",\n\"description\": \"segunda extración de melisa\",\n\"amount\": 5000,\n\"idOrder\": null\n}]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/operations.js",
+    "groupTitle": "Operations",
+    "examples": [
+      {
+        "title": "HeaderAuthorization",
+        "content": "\nAuthorization = Bearer {token}",
+        "type": "json"
+      }
+    ],
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/operations",
+    "title": "Create Operation",
+    "name": "Post_Operations",
+    "group": "Operations",
+    "description": "<p>Crea una operación</p>",
+    "examples": [
+      {
+        "title": "body",
+        "content": "\n{\n \"type\": \"extraction\",\n \"description\": \"segunda extración de melisa\",\n \"amount\": 5000,\n \"idOrder\": null\n}",
+        "type": "json"
+      },
+      {
+        "title": "HeaderAuthorization",
+        "content": "\nAuthorization = Bearer {token}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "  HTTP/1.1 200 OK\n{\n \"id\": \"5fc95e3ee6884c33089acf9f\",\n\"idWallet\": \"5f964059b2c38d058cd5a51e\",\n\"dateTime\": \"2020-12-03T21:49:58.267Z\",\n\"type\": \"extraction\",\n\"description\": \"segunda extración de melisa\",\n\"amount\": 5000,\n\"idOrder\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "routes/operations.js",
+    "groupTitle": "Operations",
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/wallet/build",
+    "title": "Build wallet",
+    "name": "Build_Wallet",
+    "group": "Wallet",
+    "description": "<p>Reconstruye la wallet</p>",
+    "version": "0.0.0",
+    "filename": "routes/wallet.js",
+    "groupTitle": "Wallet",
+    "examples": [
+      {
+        "title": "HeaderAuthorization",
+        "content": "\nAuthorization = Bearer {token}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n {\n    \"id\": \"5f964059b2c38d058cd5a51e\",\n    \"amount\": 5600,\n    \"dateTimeLastUpdate\": \"2020-12-03T04:20:41.971Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/wallet",
+    "title": "Get wallet",
+    "name": "Get_Wallet",
+    "group": "Wallet",
+    "description": "<p>Consulta de wallet</p>",
+    "version": "0.0.0",
+    "filename": "routes/wallet.js",
+    "groupTitle": "Wallet",
+    "examples": [
+      {
+        "title": "HeaderAuthorization",
+        "content": "\nAuthorization = Bearer {token}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n {\n    \"id\": \"5f964059b2c38d058cd5a51e\",\n    \"amount\": 5600,\n    \"dateTimeLastUpdate\": \"2020-12-03T04:20:41.971Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  }
+]
