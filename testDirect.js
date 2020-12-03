@@ -1,5 +1,4 @@
 var amqp = require('amqplib/callback_api');
-const operation = require('./operations/operation');
 
 amqp.connect('amqp://192.168.99.100', function(error0, connection) {
     if (error0) {

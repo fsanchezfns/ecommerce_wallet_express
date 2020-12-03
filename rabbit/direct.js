@@ -1,11 +1,14 @@
 var amqp = require('amqplib/callback_api');
 const rabbitController = require('./rabbitController')
+const cfg = require('../config/enviroment')
+config = cfg.getConfig()
+
 
 async function init() {
     //channel = await rabbit.getChannel();
 
     //esto lo quise abstraer en rabbit pero no me salio
-    amqp.connect('amqp://192.168.99.100', function(error0, connection) {
+    amqp.connect(config.rabbitUrl, function(error0, connection) {
         if (error0) {
             throw error0;
         }

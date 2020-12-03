@@ -1,12 +1,13 @@
 var amqp = require('amqplib/callback_api');
-
+const cfg = require('../config/enviroment')
+config = cfg.getConfig()
 
 /*Tome como punto de partiad este repo */
 //https://github.com/alfredobs97/RabbitMQ/blob/master/src/rabbit.js
 
 async function getChannel() {
     try {
-        const server = await createConnection('amqp://192.168.99.100');
+        const server = await createConnection(config.rabbitUrl);
         const channel = await createChannel(server);
         return channel
     } catch (err) {

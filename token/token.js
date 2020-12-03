@@ -1,6 +1,9 @@
 const cache = require('../cache/cache');
 const axios = require('axios');
 
+const cfg = require('../config/enviroment')
+config = cfg.getConfig()
+
 async function validate(token) {
 
     //Cache
@@ -20,7 +23,7 @@ async function validate(token) {
 
 async function checkToken(token) {
     try {
-        let response = await axios.get('http://localhost:3001/v1/users/current', {
+        let response = await axios.get(config.authServiceBaseUrl + '/v1/users/current', {
             headers: { 'Authorization': 'Bearer ' + token }
         });
 
