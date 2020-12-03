@@ -1,4 +1,5 @@
 var amqp = require('amqplib/callback_api');
+const operation = require('./operations/operation');
 
 amqp.connect('amqp://192.168.99.100', function(error0, connection) {
     if (error0) {
@@ -14,12 +15,17 @@ amqp.connect('amqp://192.168.99.100', function(error0, connection) {
         channel.assertExchange(exchange, 'direct', {
             durable: false
         });
-        msg = '{"idWallet": "5f964059b2c38d058cd5a51e","type": "extraction","description": "melisa sosa primer operacion","amount": 500,"idOrder":1}'
 
+        data = new Object();
+        data.idWallet = "5fc029740a9c1c38cc225f9b";
+        data.type = "extraction";
+        data.description = "primera operacion con order de melisa y no tiene wallet";
+        data.amount = 500;
+        data.idOrder = 1;
 
-        channel.publish(exchange, 'create', Buffer.from(msg));
+        channel.publish(exchange, 'create', Buffer.from(JSON.stringify(data)));
 
-        console.log("send" + msg);
+        console.log("send: " + JSON.stringify(data));
     });
 
 });
