@@ -1,5 +1,5 @@
-const operation = require('../operations/operation');
-const wallet = require('../wallet/wallet');
+const operation = require('../model/operation');
+const wallet = require('../model/wallet');
 const token = require('../token/token')
 
 async function createOperation(req, res) {
