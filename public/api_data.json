@@ -29,7 +29,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"messages\": \"UserNotFound\"\n}",
           "type": "json"
         }
       ]
@@ -65,7 +65,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"messages\": \"UserNotFound\"\n}",
           "type": "json"
         }
       ]
@@ -106,7 +106,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"messages\": \"UserNotFound\"\n}",
           "type": "json"
         }
       ]
@@ -142,7 +142,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"messages\": \"UserNotFound\"\n}",
           "type": "json"
         }
       ]
@@ -178,7 +178,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n{\n  \"messages\": \"UserNotFound\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"messages\": \"UserNotFound\"\n}",
           "type": "json"
         }
       ]

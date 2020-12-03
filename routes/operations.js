@@ -89,25 +89,4 @@ router.get('/:idOperation', async function(req, res, next) {
 
 
 
-
-/**
- * @apiDefine Error
- *
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "messages": "UserNotFound"
- *     }
- */
-
-
-/**
- * @apiDefine HeaderAuth
- * 
- * @apiExample HeaderAuthorization
- * 
- *  Authorization = Bearer {token}
- */
-
 module.exports = router;
