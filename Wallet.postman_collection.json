@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "01844886-d2b9-411b-b843-fe709d96f6ef",
+		"name": "Wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Operations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWZjMDI5NzQwYTljMWMzOGNjMjI1ZjliIiwidG9rZW5faWQiOiI1ZmM5NmViNTA0MGU2NzM0NmM4MDUwMzciLCJpYXQiOjE2MDcwMzY1OTd9.2vYvVe-WhvheV8N-JE4rH7CBzRwoebtBXXHgQHjRqfQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"extraction\",\r\n    \"description\": \"extracción 1 de melisa sosa\",\r\n    \"amount\": 300,\r\n    \"idOrder\": null\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/operations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"operations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Operations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWY5NjQwNTliMmMzOGQwNThjZDVhNTFlIiwidG9rZW5faWQiOiI1ZmM5NzZkZTA0MGU2NzM0NmM4MDUwM2EiLCJpYXQiOjE2MDcwMzg2ODZ9.5kW7NGXCGj9T2-OydDnhi0qYadOhVw-OPoclHB7avRA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/v1/operations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"operations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Operation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWY5NjQwNTliMmMzOGQwNThjZDVhNTFlIiwidG9rZW5faWQiOiI1ZmM5NmUxMjA0MGU2NzM0NmM4MDUwMzYiLCJpYXQiOjE2MDcwMzY0MzR9.bcBRXY5TPfAD1BfbeZzdXfPAqHvf2GnIauCu_XftPBc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/v1/operations/5fc96e38b6188723ec30d8d9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"operations",
+						"5fc96e38b6188723ec30d8d9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wallet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWY5NjQwNTliMmMzOGQwNThjZDVhNTFlIiwidG9rZW5faWQiOiI1ZmM5NmUxMjA0MGU2NzM0NmM4MDUwMzYiLCJpYXQiOjE2MDcwMzY0MzR9.bcBRXY5TPfAD1BfbeZzdXfPAqHvf2GnIauCu_XftPBc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/v1/wallet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"wallet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Build Wallet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWY5NjQwNTliMmMzOGQwNThjZDVhNTFlIiwidG9rZW5faWQiOiI1ZmM5NmVmYTA0MGU2NzM0NmM4MDUwMzkiLCJpYXQiOjE2MDcwMzY2NjZ9.4F344ws0UOwmxglX-FfXJ-eHkbndLpwbUsr-gg3G5AQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/v1/wallet/build",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"wallet",
+						"build"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
